@@ -11,3 +11,4 @@ class MetroRequest(Enum):
     COUNT_OF_LINE_STATIONS = 7
     LIST_OF_LINE_STATIONS = 8
     LIST_OF_LINES = 9
+    CLOSE = 10

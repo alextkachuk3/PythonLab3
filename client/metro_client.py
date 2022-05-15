@@ -98,6 +98,13 @@ class MetroClient:
         self.disconnect()
         return response
 
+    def close_server(self):
+        self.connect()
+        request = [MetroRequest.LIST_OF_LINES.CLOSE.value, []]
+        self.send_request(request)
+        self.get_response()
+        self.client_socket.close()
+
     def disconnect(self):
         self.client_socket.close()
         self.client_socket = socket()

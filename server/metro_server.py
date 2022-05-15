@@ -62,7 +62,7 @@ class MetroServer:
                 self.metro.delete_station(request_data[0])
                 send_success_message(client_socket)
             case MetroRequest.UPDATE_STATION:
-                self.metro.update_station(request_data[0], request_data[1], request_data[2])
+                self.metro.update_station(request_data[0], request_data[1], request_data[2], request_data[3])
                 send_success_message(client_socket)
             case MetroRequest.FIND_STATION_BY_NAME:
                 response = self.metro.find_station(request_data[0])

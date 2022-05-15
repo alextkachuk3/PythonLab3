@@ -42,7 +42,55 @@ class MetroClient:
         self.send_request(request)
         self.disconnect()
 
-    def line_list(self):
+    def delete_line(self, id: int):
+        self.connect()
+        request = [MetroRequest.DELETE_LINE.value, [str(id)]]
+        self.send_request(request)
+        self.disconnect()
+
+    def add_station(self, name: str, line_id: int, open: str, close: str):
+        self.connect()
+        request = [MetroRequest.ADD_STATION.value, [name, str(line_id), open, close]]
+        self.send_request(request)
+        self.disconnect()
+
+    def delete_station(self, id: int):
+        self.connect()
+        request = [MetroRequest.DELETE_STATION.value, [str(id)]]
+        self.send_request(request)
+        self.disconnect()
+
+    def update_station(self, name: str, id: int, open: str, close: str):
+        self.connect()
+        request = [MetroRequest.UPDATE_STATION.value, [str(id), name, open, close]]
+        self.send_request(request)
+        self.disconnect()
+
+    def find_station_by_name(self, name: str):
+        self.connect()
+        request = [MetroRequest.FIND_STATION_BY_NAME.value, [name]]
+        self.send_request(request)
+        response = self.get_response()
+        self.disconnect()
+        return response
+
+    def get_count_of_line_stations(self, line_id: int):
+        self.connect()
+        request = [MetroRequest.COUNT_OF_LINE_STATIONS.value, [str(line_id)]]
+        self.send_request(request)
+        response = self.get_response()
+        self.disconnect()
+        return response
+
+    def get_line_stations(self, line_id: int):
+        self.connect()
+        request = [MetroRequest.LIST_OF_LINE_STATIONS.value, [str(line_id)]]
+        self.send_request(request)
+        response = self.get_response()
+        self.disconnect()
+        return response
+
+    def get_line_list(self):
         self.connect()
         request = [MetroRequest.LIST_OF_LINES.value, []]
         self.send_request(request)

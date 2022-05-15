@@ -119,7 +119,7 @@ class Metro:
 
         return result
 
-    def lines_list(self, row_count=100):
+    def get_lines_list(self, row_count=100):
         with self.connection.cursor() as cursor:
             select_lines_list_query = "SELECT * FROM metro_lines LIMIT %s"
             select_lines_list_val = row_count

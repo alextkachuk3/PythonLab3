@@ -78,7 +78,7 @@ class MetroServer:
                     send_success_message(client_socket)
                     send_response(response, client_socket)
                 case MetroRequest.LIST_OF_LINES:
-                    response = self.metro.lines_list()
+                    response = self.metro.get_lines_list()
                     send_success_message(client_socket)
                     send_response(response, client_socket)
                 case MetroRequest.CLOSE:

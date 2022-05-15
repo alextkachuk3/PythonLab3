@@ -60,7 +60,7 @@ class MetroClient:
         self.send_request(request)
         self.disconnect()
 
-    def update_station(self, name: str, id: int, open: str, close: str):
+    def update_station(self, id: int, name: str, open: str, close: str):
         self.connect()
         request = [MetroRequest.UPDATE_STATION.value, [str(id), name, open, close]]
         self.send_request(request)
@@ -70,7 +70,7 @@ class MetroClient:
         self.connect()
         request = [MetroRequest.FIND_STATION_BY_NAME.value, [name]]
         self.send_request(request)
-        response = self.get_response()
+        response = eval(self.get_response())
         self.disconnect()
         return response
 
@@ -78,7 +78,7 @@ class MetroClient:
         self.connect()
         request = [MetroRequest.COUNT_OF_LINE_STATIONS.value, [str(line_id)]]
         self.send_request(request)
-        response = self.get_response()
+        response = eval(self.get_response())
         self.disconnect()
         return response
 
@@ -86,11 +86,11 @@ class MetroClient:
         self.connect()
         request = [MetroRequest.LIST_OF_LINE_STATIONS.value, [str(line_id)]]
         self.send_request(request)
-        response = self.get_response()
+        response = eval(self.get_response())
         self.disconnect()
         return response
 
-    def get_line_list(self):
+    def get_lines_list(self):
         self.connect()
         request = [MetroRequest.LIST_OF_LINES.value, []]
         self.send_request(request)

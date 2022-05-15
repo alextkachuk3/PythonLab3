@@ -46,4 +46,10 @@ class MetroClient:
         self.connect()
         request = [MetroRequest.LIST_OF_LINES.value, []]
         self.send_request(request)
-        return self.get_response()
+        response = self.get_response()
+        self.disconnect()
+        return response
+
+    def disconnect(self):
+        self.client_socket.close()
+        self.client_socket = socket()

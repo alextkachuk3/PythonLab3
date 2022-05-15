@@ -156,30 +156,12 @@ class Metro:
             cursor.execute(station_count_query, station_count_val)
             return cursor.fetchall()[0][0]
 
-    def update_station_name(self, station_id, new_station_name):
+    def update_station(self, station_id, station_name, open_time, close_time):
         try:
             with self.connection.cursor() as cursor:
-                update_station_name_query = "UPDATE metro_stations SET name = %s WHERE id = %s"
-                update_station_name_val = (new_station_name, station_id)
+                update_station_name_query = "UPDATE metro_stations SET name = %s, open = %s, close = %s WHERE id = %s"
+                update_station_name_val = (station_name, open_time, close_time, station_id)
                 cursor.execute(update_station_name_query, update_station_name_val)
-        finally:
-            self.connection.commit()
-
-    def update_open_time(self, station_id, new_open_time):
-        try:
-            with self.connection.cursor() as cursor:
-                update_open_time_query = "UPDATE metro_stations SET open = %s WHERE id = %s"
-                update_open_time_val = (new_open_time, station_id)
-                cursor.execute(update_open_time_query, update_open_time_val)
-        finally:
-            self.connection.commit()
-
-    def update_close_time(self, station_id, new_close_time):
-        try:
-            with self.connection.cursor() as cursor:
-                update_close_time_query = "UPDATE metro_stations SET close = %s WHERE id = %s"
-                update_close_time_val = (new_close_time, station_id)
-                cursor.execute(update_close_time_query, update_close_time_val)
         finally:
             self.connection.commit()
 

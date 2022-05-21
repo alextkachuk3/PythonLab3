@@ -87,5 +87,3 @@ class MetroServer:
                     send_response("Exit server", client_socket)
                     self.metro_socket.close()
             client_socket.close()
-
-    # def process_request(self, request, client_socket):

@@ -235,7 +235,7 @@ class TestRemoteMetroSQL(unittest.TestCase):
 
         self.assertEqual(result_client, result_server)
 
-    def get_line_list(self):
+    def get_lines_list(self):
         self.init_server()
 
         self.client = MetroClient('127.0.0.1', 25565)
